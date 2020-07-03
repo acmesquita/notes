@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { useList } from '../../context/item'
-import { Container, Item } from './styles';
+import { Container } from './styles';
+import Item from '../Item'
 
 const List: React.FC = () => {
   const { list } = useList()
@@ -10,7 +11,7 @@ const List: React.FC = () => {
     <div>
       <Container>
         {list.length == 0 && <p>Nunhuma nota registrada.</p>}
-        {list.map(item => <Item>{item.text}</Item>)}
+        {list.map(item => <Item key={item.id} id={item.id}>{item.text}</Item>)}
       </Container>
     </div>
   );
