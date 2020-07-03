@@ -4,11 +4,12 @@ import * as url from 'url'
 
 let mainWindow: Electron.BrowserWindow | null
 
-function createWindow () {
+function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1100,
     height: 700,
-    backgroundColor: '#191622',
+    backgroundColor: '#191658',
+    title: 'Notes',
     webPreferences: {
       nodeIntegration: true
     }
