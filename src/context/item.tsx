@@ -14,16 +14,28 @@ interface ItemHide {
   (id: string): void
 }
 
+interface ItemEdit {
+  (id: string, newText: string): void
+}
+
 interface ItemContext {
   list: ItemNotes[];
   addItem: ItemShow;
   removeItem: ItemHide;
+  editItem: ItemEdit;
 }
 
 const ItemContext = createContext<ItemContext | null>(null)
 
 const ItemProvider: React.FC = ({ children }) => {
   const [list, setList] = useState<ItemNotes[]>([])
+
+  const editItem = useCallback<ItemEdit>((id, newText) => {
+    setList(state => state.map(item => {
+      if (item.id === id) item.text = newText;
+      return item
+    }))
+  }, [])
 
   const removeItem = useCallback(id => {
     setList(state => state.filter(item => item.id !== id))
@@ -38,7 +50,7 @@ const ItemProvider: React.FC = ({ children }) => {
   }, [])
 
   return (
-    <ItemContext.Provider value={{ addItem, removeItem, list }}>
+    <ItemContext.Provider value={{ addItem, removeItem, editItem, list }}>
       {children}
     </ItemContext.Provider>
   )

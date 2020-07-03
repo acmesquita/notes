@@ -8,6 +8,7 @@ export const ItemList = styled.li`
   max-width: 200px;
   width: 200px;
   min-height: 100px;
+  height: auto;
   margin: 10px;
   color: #434343;
 
@@ -18,5 +19,17 @@ export const ItemList = styled.li`
     justify-content: flex-end;
     align-items: center;
     cursor: pointer;
+  }
+
+  textarea {
+    background-color: transparent;
+    width: 100%;
+    resize: none;
+    height: auto;
+    border: none;
+    overflow: hidden;
+    font-size: 16px;
+    font-family: sans-serif;
+    box-shadow: border-box;
   }
 `;

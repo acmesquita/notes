@@ -11,7 +11,7 @@ const List: React.FC = () => {
     <div>
       <Container>
         {list.length == 0 && <p>Nunhuma nota registrada.</p>}
-        {list.map(item => <Item key={item.id} id={item.id}>{item.text}</Item>)}
+        {list.map(item => <Item key={item.id} id={item.id} value={item.text} />)}
       </Container>
     </div>
   );
